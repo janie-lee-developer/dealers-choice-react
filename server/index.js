@@ -24,7 +24,7 @@ app.use('/public', static(path.join(__dirname, '../public')));
 // react
 // app.use('/client', express.static(path.join(__dirname, 'client')));
 // css, picture assets
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
 // routes
 // app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
