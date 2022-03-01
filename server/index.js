@@ -38,6 +38,7 @@ const init = async() => {
     try {
         await syncAndSeed();
 
+        // More modification on db after asynAndSeed(); 
         const users = await User.findAll({});
         const pets = await Pet.findAll({});
 
@@ -57,8 +58,10 @@ const init = async() => {
             })
         )
 
+        // dummy array for 10 matches
         const numsOfMatch = Array(10).fill('_');
 
+        // create 10 unique matches
         await Promise.all(
             numsOfMatch.map( match => {
                 let count = 0;
@@ -74,6 +77,7 @@ const init = async() => {
             })
         )
 
+        // port
         const port = process.env.PORT || 3000;
         app.listen(port, () => console.log(`******************* Listening on port ${port} *******************`));
     }
