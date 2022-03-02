@@ -18,13 +18,13 @@ const syncAndSeed = async () => {
     );
 
     //created 5 breeds.
-    const breeds = ['Pomeranian', 'Siberian Husky', 'Bulldog', 'Poodle', 'GoldenRetriever'];
+    const breeds = ['Pomeranian', 'SiberianHusky', 'Bulldog', 'Poodle', 'GoldenRetriever'];
 
     //created dummy array for 8 pet names.
     const petNames = Array(8).fill().map((_, index) => `pet name ${index + 1}`);
 
     //assigned random breeds to all 8 pets.
-    const pets = await Promise.all(
+    await Promise.all(
         petNames.map(pet => Pet.create({
             pet_name: pet,
             breed: breeds[Math.floor(Math.random() * breeds.length)],

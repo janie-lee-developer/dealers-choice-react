@@ -1,9 +1,15 @@
 import React from 'react';
+import Match from './Match';
 
-const ListOfMatches = ({ matches }) => {
+const ListOfMatches = ({ matches, destroy }) => {
     return(
         <div>
-            { matches[0].key.name, matches[0].key.bio }
+            <h2>Matches</h2>
+            {
+                matches.map(( match, index ) => {
+                    return <Match key = {match.id} match = { match } destroy={ destroy }/>
+                })
+            }
         </div>
     )
 }

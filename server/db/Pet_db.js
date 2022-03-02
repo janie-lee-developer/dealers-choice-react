@@ -10,7 +10,6 @@ const Pet = db.define('pet', {
         pet_name: {
             type: STRING(20),
             allowNull: false,
-            unique: true,
             validate: {
                 notEmpty: true
             }
@@ -24,6 +23,9 @@ const Pet = db.define('pet', {
         },
         age: {
             type: INTEGER
+        },
+        imgUrl: {
+            type: STRING(30)
         }
     }
 );

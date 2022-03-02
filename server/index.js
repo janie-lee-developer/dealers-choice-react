@@ -76,6 +76,11 @@ const init = async() => {
                 }
             })
         )
+        
+        await pets.map( pet => {
+            pet.imgUrl = `${pet.breed}.png`;
+            pet.save()
+        })
 
         // port
         const port = process.env.PORT || 3000;
