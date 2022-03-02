@@ -1,4 +1,4 @@
-# dearlers-choice-react
+# dealers-choice-react
 
 1. createdb pets_dating
 2. npm i
