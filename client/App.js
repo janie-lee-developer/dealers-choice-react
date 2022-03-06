@@ -6,18 +6,21 @@ import Users from "./Components/Users";
 import Pets from "./Components/Pets";
 import Form from "./Components/Form"
 
+//https://reactjs.org/docs/forms.html
+
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
             matches: [],
             users: [],
-            pets: []
+            pets: [],
+            newUser: false
         };
         this.loadApiUsers = this.loadApiUsers.bind(this);
         this.loadApiPets = this.loadApiPets.bind(this);
         this.destroy = this.destroy.bind(this);
-        this.create = this.create.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     async componentDidMount() {
@@ -51,9 +54,17 @@ class App extends React.Component {
         this.setState({ matches });
     }
 
-    async create(obj) {
-        const matches = [obj, ...this.state.matches ]
-        this.setState({ matches });
+    async handleSubmit(e) {
+        const response = (await axios.post(`/api/matches`, {
+            userName: e.target.userName.value,
+            userBio: e.target.userBio.value,
+            petName: e.target.petName.value,
+            petBreed: e.target.petBreed.value,
+            petAge: e.target.petAge.value,
+            petImgUrl: e.target.petImgUrl.value
+        })).data
+
+        this.componentDidMount();
     }
 
     render() {
@@ -69,7 +80,7 @@ class App extends React.Component {
         return (
             <div>
                 <Nav loadApiUsers={ this.loadApiUsers } loadApiPets={ this.loadApiPets } />
-                <Form create={this.create}/>
+                <Form handleSubmit={this.handleSubmit}/>
                 <Component />
             </div>
         )
